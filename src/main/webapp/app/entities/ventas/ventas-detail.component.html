@@ -1,0 +1,33 @@
+
+<div *ngIf="ventas">
+    <h2><span jhiTranslate="pruebaAzielV2App.ventas.detail.title">Ventas</span> {{ventas.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="pruebaAzielV2App.ventas.fecha">Fecha</span></dt>
+        <dd>
+            <span>{{ventas.fecha | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaAzielV2App.ventas.totalpagar">Totalpagar</span></dt>
+        <dd>
+            <span>{{ventas.totalpagar}}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaAzielV2App.ventas.ganancia">Ganancia</span></dt>
+        <dd>
+            <span>{{ventas.ganancia}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'ventas/'+ ventas.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

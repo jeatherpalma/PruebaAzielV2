@@ -1,0 +1,45 @@
+
+<div *ngIf="historial">
+    <h2><span jhiTranslate="pruebaAzielV2App.historial.detail.title">Historial</span> {{historial.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="pruebaAzielV2App.historial.precioactual">Precioactual</span></dt>
+        <dd>
+            <span>{{historial.precioactual}}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaAzielV2App.historial.cantidad">Cantidad</span></dt>
+        <dd>
+            <span>{{historial.cantidad}}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaAzielV2App.historial.totalproducto">Totalproducto</span></dt>
+        <dd>
+            <span>{{historial.totalproducto}}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaAzielV2App.historial.producto">Producto</span></dt>
+        <dd>
+            <div *ngIf="historial.producto">
+                <a [routerLink]="['/producto', historial.producto?.id]">{{historial.producto?.nombre}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="pruebaAzielV2App.historial.ventas">Ventas</span></dt>
+        <dd>
+            <div *ngIf="historial.ventas">
+                <a [routerLink]="['/ventas', historial.ventas?.id]">{{historial.ventas?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'historial/'+ historial.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

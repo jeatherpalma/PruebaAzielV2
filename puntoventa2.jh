@@ -1,0 +1,45 @@
+
+
+//--------------------------------------------------
+entity Categoria{
+	nombre String minlength(4) maxlength(50) required, //Unique
+    descripcion String minlength(10) maxlength(150) required
+}
+
+entity Producto{
+	c_barras String minlength(13) maxlength(30) required,
+    nombre String minlength(2) maxlength(100) required,
+    descripcion String minlength(10) maxlength(150) required,
+    cantidad Integer required,
+    pcompra Float required,
+    pventa Float required
+}
+
+entity Ventas{
+	fecha LocalDate required,
+    total_pagar Float required,
+    ganancia Float required
+}
+
+entity Historial{
+	precio_actual Float required,
+	cantidad Integer required,
+    total_producto Float required,
+}
+
+
+//--------------------------------------------------
+relationship OneToMany{
+	Categoria{} to Producto{categoria(nombre)},
+    Producto{} to Historial{producto(nombre)},
+    Ventas to Historial{ventas}
+}
+
+
+
+
+
+
+
+
+

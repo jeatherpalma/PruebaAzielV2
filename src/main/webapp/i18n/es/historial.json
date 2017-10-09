@@ -1,0 +1,25 @@
+{
+    "pruebaAzielV2App": {
+        "historial" : {
+            "home": {
+                "title": "Historials",
+                "createLabel": "Crear nuevo Historial",
+                "createOrEditLabel": "Crear o editar Historial"
+            },
+            "created": "Un nuevo Historial ha sido creado con el identificador {{ param }}",
+            "updated": "Un Historial ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Historial ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Historial {{ id }}?"
+            },
+            "detail": {
+                "title": "Historial"
+            },
+            "precioactual": "Precioactual",
+            "cantidad": "Cantidad",
+            "totalproducto": "Totalproducto",
+            "producto": "Producto",
+            "ventas": "Ventas"
+        }
+    }
+}

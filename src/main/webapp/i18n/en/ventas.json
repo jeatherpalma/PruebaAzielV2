@@ -1,0 +1,24 @@
+{
+    "pruebaAzielV2App": {
+        "ventas" : {
+            "home": {
+                "title": "Ventas",
+                "createLabel": "Create a new Ventas",
+                "createOrEditLabel": "Create or edit a Ventas"
+            },
+            "created": "A new Ventas is created with identifier {{ param }}",
+            "updated": "A Ventas is updated with identifier {{ param }}",
+            "deleted": "A Ventas is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Ventas {{ id }}?"
+            },
+            "detail": {
+                "title": "Ventas"
+            },
+            "fecha": "Fecha",
+            "totalpagar": "Totalpagar",
+            "ganancia": "Ganancia",
+            "historial": "Historial"
+        }
+    }
+}

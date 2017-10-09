@@ -1,0 +1,51 @@
+
+<div *ngIf="producto">
+    <h2><span jhiTranslate="pruebaAzielV2App.producto.detail.title">Producto</span> {{producto.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="pruebaAzielV2App.producto.cbarras">Cbarras</span></dt>
+        <dd>
+            <span>{{producto.cbarras}}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaAzielV2App.producto.nombre">Nombre</span></dt>
+        <dd>
+            <span>{{producto.nombre}}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaAzielV2App.producto.descripcion">Descripcion</span></dt>
+        <dd>
+            <span>{{producto.descripcion}}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaAzielV2App.producto.cantidad">Cantidad</span></dt>
+        <dd>
+            <span>{{producto.cantidad}}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaAzielV2App.producto.pcompra">Pcompra</span></dt>
+        <dd>
+            <span>{{producto.pcompra}}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaAzielV2App.producto.pventa">Pventa</span></dt>
+        <dd>
+            <span>{{producto.pventa}}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebaAzielV2App.producto.categoria">Categoria</span></dt>
+        <dd>
+            <div *ngIf="producto.categoria">
+                <a [routerLink]="['/categoria', producto.categoria?.id]">{{producto.categoria?.nombre}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'producto/'+ producto.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

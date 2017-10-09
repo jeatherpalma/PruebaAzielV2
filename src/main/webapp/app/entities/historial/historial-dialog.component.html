@@ -1,0 +1,84 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myHistorialLabel" jhiTranslate="pruebaAzielV2App.historial.home.createOrEditLabel">Create or edit a Historial</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!historial.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="historial.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pruebaAzielV2App.historial.precioactual" for="field_precioactual">Precioactual</label>
+            <input type="number" class="form-control" name="precioactual" id="field_precioactual"
+                [(ngModel)]="historial.precioactual" required />
+            <div [hidden]="!(editForm.controls.precioactual?.dirty && editForm.controls.precioactual?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.precioactual?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.precioactual?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pruebaAzielV2App.historial.cantidad" for="field_cantidad">Cantidad</label>
+            <input type="number" class="form-control" name="cantidad" id="field_cantidad"
+                [(ngModel)]="historial.cantidad" required />
+            <div [hidden]="!(editForm.controls.cantidad?.dirty && editForm.controls.cantidad?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.cantidad?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.cantidad?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pruebaAzielV2App.historial.totalproducto" for="field_totalproducto">Totalproducto</label>
+            <input type="number" class="form-control" name="totalproducto" id="field_totalproducto"
+                [(ngModel)]="historial.totalproducto" required />
+            <div [hidden]="!(editForm.controls.totalproducto?.dirty && editForm.controls.totalproducto?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.totalproducto?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.totalproducto?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pruebaAzielV2App.historial.producto" for="field_producto">Producto</label>
+            <select class="form-control" id="field_producto" name="producto" [(ngModel)]="historial.producto" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="productoOption.id === historial.producto?.id ? historial.producto : productoOption" *ngFor="let productoOption of productos; trackBy: trackProductoById">{{productoOption.nombre}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="pruebaAzielV2App.historial.ventas" for="field_ventas">Ventas</label>
+            <select class="form-control" id="field_ventas" name="ventas" [(ngModel)]="historial.ventas" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="ventasOption.id === historial.ventas?.id ? historial.ventas : ventasOption" *ngFor="let ventasOption of ventas; trackBy: trackVentasById">{{ventasOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
